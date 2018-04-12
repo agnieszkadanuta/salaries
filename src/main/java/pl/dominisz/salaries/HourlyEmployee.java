@@ -32,7 +32,7 @@ public class HourlyEmployee extends Employee {
 
 
     @Override
-    protected BigDecimal computeSalary(LocalDate date) {
+    public BigDecimal computeSalary(LocalDate date) {
         LocalDate firstDay = getFirstDayOfWorkingPeriod(date);
         List<WorkingDay> salariedDays = findWorkingDays(firstDay, date);
 

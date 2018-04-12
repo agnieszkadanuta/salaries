@@ -25,7 +25,7 @@ public class ComissionalEmployee extends Employee {
         }
     }
 
-    protected BigDecimal computeSalary(LocalDate date) {
+    public BigDecimal computeSalary(LocalDate date) {
         return BigDecimal.ZERO;
     }
 

@@ -15,11 +15,11 @@ public abstract class Employee {
         this.name = name;
     }
 
-    protected abstract BigDecimal computeSalary(LocalDate date);
+    public abstract BigDecimal computeSalary(LocalDate date);
 
-    protected abstract LocalDate getFirstDayOfWorkingPeriod(LocalDate date);
+    public abstract LocalDate getFirstDayOfWorkingPeriod(LocalDate date);
 
-    protected abstract boolean isPayDay(LocalDate date);
+    public abstract boolean isPayDay(LocalDate date);
 
     public BigDecimal getSalary(LocalDate date) {
         if (isPayDay(date)) {

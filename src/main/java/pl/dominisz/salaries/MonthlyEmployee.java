@@ -8,6 +8,9 @@ import java.time.LocalDate;
  * 11.04.2018
  */
 public class MonthlyEmployee extends Employee {
+    public MonthlyEmployee(String name) {
+        super(name);
+    }
     //salary
 
 

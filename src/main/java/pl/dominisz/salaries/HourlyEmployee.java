@@ -35,7 +35,6 @@ public class HourlyEmployee extends Employee {
     public BigDecimal computeSalary(LocalDate date) {
         LocalDate firstDay = getFirstDayOfWorkingPeriod(date);
         List<WorkingDay> salariedDays = findWorkingDays(firstDay, date);
-
         return computeSalary(salariedDays);
     }
 

@@ -41,4 +41,28 @@ class HourlyEmployeeTest {
         hourlyEmployee.addWorkingDay(workingDay);
         assertEquals(BigDecimal.valueOf(8), hourlyEmployee.getSalary(LocalDate.of(2018,4,13)));
     }
+
+    @Test
+    void testgetSalaryifDayisFridayAndItIsOverhours(){
+        HourlyEmployee hourlyEmployee = new HourlyEmployee("name", BigDecimal.ONE);
+        WorkingDay workingDay = new WorkingDay(LocalDate.of(2018,4,13), 12);
+        hourlyEmployee.addWorkingDay(workingDay);
+        BigDecimal expectedSalary = new BigDecimal(14);
+        BigDecimal actualSalary = hourlyEmployee.getSalary(LocalDate.of(2018,4,13));
+        Assertions.assertTrue(expectedSalary.compareTo(actualSalary) == 0);
+    }
+
+    @Test
+    void testShouldReturnOverhourSalaryForOneDayWithoutOtherDays(){
+        HourlyEmployee hourlyEmployee = new HourlyEmployee("name", BigDecimal.ONE);
+        WorkingDay workingDay = new WorkingDay(LocalDate.of(2018, 4, 12), 12);
+        WorkingDay earlierDay = new WorkingDay(LocalDate.of(2018, 4, 1), 8);
+        WorkingDay laterDay = new WorkingDay(LocalDate.of(2018, 4, 15), 8);
+        hourlyEmployee.addWorkingDay(workingDay);
+        hourlyEmployee.addWorkingDay(earlierDay);
+        hourlyEmployee.addWorkingDay(laterDay);
+        BigDecimal expectedSalary = new BigDecimal(14);
+        BigDecimal actualSalary = hourlyEmployee.getSalary(LocalDate.of(2018, 4, 13));
+        assertTrue(expectedSalary.compareTo(actualSalary) == 0);
+    }
 }
